@@ -1,0 +1,44 @@
+# Template for Spring Properties file. Original should NEVER be commited to GitHub
+
+# Path to Lucene index directory
+lucene.index.location=index/geonames
+
+# -------------------------
+# Indexing RELATED PROPERTIES
+# -------------------------
+# root URL to download geonames files
+geonames.download.url=http://download.geonames.org/export/dump/
+
+# Path to the directory where Geonames files should-be stored
+geonames.files.location=resources/
+
+# List of feature classes to be excluded for indexing
+# Entries will be included if their feature codes are included
+# Reference: https://www.geonames.org/export/codes.html
+geonames.feature_class.exclude=H,L,R,S,T,U,V
+
+# List of feature codes to include for indexing
+geonames.feature_code.include=CONT,RGN,RESN,PRK,ISL,ISLS
+
+# List of feature codes to include for indexing
+geonames.feature_code.exclude=ZN
+
+# List of GeonameIds to skip indexing
+# TODO: If it exceeds 50, load from file
+geonames.geonameids.exclude=7729898,7730009
+
+# Mapping file for direct mapping of string to geonameids
+# Practical when population is not a good heuristic
+geonames.mapping.file=config/custom_mappings.tsv
+
+# -------------------------
+# SEARCH RELATED PROPERTIES
+# -------------------------
+# Default number of records to be requested when not requested explicitly
+lucene.query.default.records=100
+
+# Maximum number of records that can be returned by the API
+lucene.query.max.records=1000
+
+# Port to be used for the rest api
+server.port=8091
