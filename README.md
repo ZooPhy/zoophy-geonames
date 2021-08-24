@@ -21,19 +21,19 @@ This will download the required packages using Maven and build the system. The b
 
 4) Download the GeoNames files using the command. 
 ```
-java -jar target/geonames-service-0.1.0.jar download
+java -jar target/zoophy-geonames-1.0.0.jar download
 ```
 This downloads the required GeoNames files (about 2.3 GB disk space) into the ```resources``` directory.
 
 5) Create the lucene index using the command. This may
 ```
-java -jar target/geonames-service-0.1.0.jar create
+java -jar target/zoophy-geonames-1.0.0.jar create
 ```
 This creates a searchable Lucene Index (about 1.5 GB disk space) in the ```index``` directory.
 
 6) Run the services for querying data
 ```
-java -jar target/geonames-service-0.1.0.jar
+java -jar target/zoophy-geonames-1.0.0.jar
 ```
 If it runs successfully, you should see a list of messages ending with 
 ```

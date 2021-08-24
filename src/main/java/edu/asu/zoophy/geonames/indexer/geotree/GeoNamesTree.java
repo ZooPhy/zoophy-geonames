@@ -66,7 +66,13 @@ public class GeoNamesTree {
 				line = scan.nextLine();
 				String[] geoname = line.split("\t");
 				if (!line.startsWith("#")) {
-					int geonameid = Integer.parseInt(geoname[1]);
+					int geonameid = -1;
+					try {
+						geonameid = Integer.parseInt(geoname[1]);
+					} catch (Exception e) {
+						log.warning("Error parsing ("+GeoAltNamesFile+") Field: GeonamesID:" + geoname[1]);
+						continue;
+					}
 					String isolanguage = geoname[2];
 					String altName = geoname[3];
 					boolean isPreferredName = geoname.length>5 && geoname[4]=="1" ? true : false;
@@ -105,17 +111,38 @@ public class GeoNamesTree {
 					String iso = geoname[0];
 					String iso3 = geoname[1];
 					String name = geoname[4];
-					double area = Double.parseDouble(geoname[6]);
-					int population = Integer.parseInt(geoname[7]);
+					double area = 0;
+					int population = 0;
+					try {
+						area = Double.parseDouble(geoname[6]);
+					} catch (Exception e) {
+						log.warning("Error parsing ("+GeoCountryFile+") Area:" + geoname[6]);
+					}
+					try{
+						population = Integer.parseInt(geoname[7]);
+					} catch (Exception e) {
+						log.warning("Error parsing ("+GeoCountryFile+") Population:" + geoname[7]);
+					}
 					String continentName = "";
 					int continentId = -1;
 					String continentCode = geoname[8];
 					if(continentLookup.containsKey(continentCode)){
 						String[] continentParts = continentLookup.get(continentCode).split(",");
-						continentId = Integer.parseInt(continentParts[0]);
+						try{
+							continentId = Integer.parseInt(continentParts[0]);
+						} catch (Exception e) {
+							log.warning("Error parsing ("+GeoCountryFile+") ContinentID:" + continentParts[0]);
+							continue;
+						}
 						continentName = continentParts[1];
 					}
-					int id = Integer.parseInt(geoname[16]);
+					int id = -1;
+					try{
+						id = Integer.parseInt(geoname[16]);
+					} catch (Exception e) {
+						log.warning("Error parsing ("+GeoCountryFile+") ContinentID:" + geoname[16]);
+						continue;
+					}
 					Set<String> altNames = new HashSet<String>();
 					if (getAltNamesLookup().containsKey(id)) {
 						altNames = getAltNamesLookup().get(id);
@@ -147,7 +174,14 @@ public class GeoNamesTree {
 					String code = geoname[0];
 					String name = geoname[1];
 					String asciiname = geoname[2];
-					int id = Integer.parseInt(geoname[3]);
+					int id = -1;
+					try {
+						id = Integer.parseInt(geoname[3]);
+					} catch (Exception e) {
+						log.warning("Error parsing ("+filename+") field-ID in:" + geoname[3]);
+						continue;
+					}
+
 					Set<String> altNames = new HashSet<String>();
 					if (getAltNamesLookup().containsKey(id)) {
 						altNames = getAltNamesLookup().get(id);

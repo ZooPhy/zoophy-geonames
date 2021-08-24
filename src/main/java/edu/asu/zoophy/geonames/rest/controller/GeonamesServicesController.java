@@ -17,7 +17,7 @@ import edu.asu.zoophy.geonames.rest.search.Result;
 
 /**
  * Responsible for mapping Lucene service requests
- * @author devdemetri, amagge
+ * @author amagge
  */
 @RestController
 public class GeonamesServicesController {
@@ -31,7 +31,7 @@ public class GeonamesServicesController {
 	@Value("${lucene.query.max.records}")
 	private Integer QUERY_MAX_RECORDS;
 	
-	private final static Logger logger = Logger.getLogger("SemevalBaselineServicesController");
+	private final static Logger logger = Logger.getLogger("GeonamesServicesController");
 	
 	/**
 	 * Simple check that REST services are running
