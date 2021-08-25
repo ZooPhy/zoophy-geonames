@@ -164,6 +164,10 @@ http://localhost:8091/search?query=Name:Springfield AND State:PA&count=2
 }
 ```
 
+## Tutorial
+A colab notebook tutorial for setting up the `zoophy-geonames` service. \
+[Colab Notebook](https://colab.research.google.com/drive/1RePLeFaKcF_VJ2nFTgce-mBnSLJgHbBM?usp=sharing)
+
 ## Resources
 * Details on Lucene Query syntax can be found [here](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html) and [here](https://lucene.apache.org/core/6_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package.description)
 * Details on GeoNames fields and format can be found [here](http://download.geonames.org/export/dump/)
